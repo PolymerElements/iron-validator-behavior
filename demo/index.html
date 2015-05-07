@@ -39,7 +39,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </head>
 <body>
 
-  <template is="x-autobind">
+  <template is="dom-bind">
 
     <cats-only></cats-only>
 
@@ -106,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     var validator = new Polymer.IronMeta({type: 'validator'}).byKey('cats-only');
 
-    var scope = document.querySelector('template[is=x-autobind]');
+    var scope = document.querySelector('template[is=dom-bind]');
     scope.valid = scope.validMulti = scope.validForm = true;
 
     scope._onInput = function(event) {
