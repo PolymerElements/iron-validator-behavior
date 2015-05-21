@@ -11,15 +11,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-meta/iron-meta.html">
 
-<!--
+<script>
+
+/*
 Use `Polymer.IronValidatorBehavior` to implement a custom input/form validator. Element instances
 implementing this behavior will be registered for use in elements that implement
 `Polymer.IronValidatableBehavior`.
--->
+@polymerBehavior
+*/
 
-<script>
-
-  /** @polymerBehavior */
   Polymer.IronValidatorBehavior = {
 
     properties: {
@@ -50,8 +50,8 @@ implementing this behavior will be registered for use in elements that implement
 
     /**
      * Implement custom validation logic in this function.
-     *
-     * @method validate
+     * @param {Object} values The value to validate. May be any type depending on the validation logic.
+     * @return {Boolean} true if `values` is valid.
      */
     validate: function(values) {
     }
