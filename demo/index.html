@@ -20,6 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
   <link rel="import" href="../../iron-meta/iron-meta.html">
+  <link rel="import" href="../../paper-styles/paper-styles.html">
   <link rel="import" href="cats-only.html">
 
   <link rel="stylesheet" href="../../paper-styles/demo.css">
@@ -104,35 +105,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
 
-    var validator = new Polymer.IronMeta({type: 'validator'}).byKey('cats-only');
+    document.addEventListener('WebComponentsReady', function() {
 
-    var scope = document.querySelector('template[is=dom-bind]');
-    scope.valid = scope.validMulti = scope.validForm = true;
+      var validator = new Polymer.IronMeta({type: 'validator'}).byKey('cats-only');
 
-    scope._onInput = function(event) {
-      this.valid = validator.validate(event.target.value);
-    };
+      var scope = document.querySelector('template[is=dom-bind]');
+      scope.valid = scope.validMulti = scope.validForm = true;
 
-    scope._onInputMulti = function(event) {
-      var values = [];
-      var nodes = Polymer.dom(event.currentTarget).querySelectorAll('input');
-      for (var node, i = 0; node = nodes[i]; i++) {
-        values.push(node.value);
-      }
-      this.validMulti = validator.validate(values);
-    };
+      scope._onInput = function(event) {
+        this.valid = validator.validate(event.target.value);
+      };
 
-    scope._onSubmit = function(event) {
-      event.preventDefault();
-
-      var data = {};
-      for (var el, i = 0; el = event.target.elements[i]; i++) {
-        if (el.name) {
-          data[el.name] = el.value;
+      scope._onInputMulti = function(event) {
+        var values = [];
+        var nodes = Polymer.dom(event.currentTarget).querySelectorAll('input');
+        for (var node, i = 0; node = nodes[i]; i++) {
+          values.push(node.value);
         }
-      }
-      this.validForm = validator.validate(data);
-    };
+        this.validMulti = validator.validate(values);
+      };
+
+      scope._onSubmit = function(event) {
+        event.preventDefault();
+
+        var data = {};
+        for (var el, i = 0; el = event.target.elements[i]; i++) {
+          if (el.name) {
+            data[el.name] = el.value;
+          }
+        }
+        this.validForm = validator.validate(data);
+      };
+
+    });
 
   </script>
 
