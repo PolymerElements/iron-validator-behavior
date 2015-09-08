@@ -46,7 +46,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     ready: function() {
-      new Polymer.IronMeta({type: this.validatorType, key: this.validatorName, value: this});
+      this._meta = Polymer.IronMeta.getIronMeta();
     },
 
     /**
