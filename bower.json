@@ -9,9 +9,7 @@
     "iron",
     "behavior"
   ],
-  "main": [
-    "iron-validator-behavior.html"
-  ],
+  "main": "iron-validator-behavior.html",
   "private": true,
   "repository": {
     "type": "git",
