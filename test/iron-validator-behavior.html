@@ -31,6 +31,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </template>
   </test-fixture>
 
+  <test-fixture id="target-specified">
+    <template>
+      <simple-validator for="validatableTarget"></simple-validator>
+    </template>
+  </test-fixture>
+
   <script>
 
     suite('basic', function() {
@@ -38,6 +44,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       test('registered in <iron-meta>', function() {
         fixture('basic');
         assert.ok(new Polymer.IronMeta({type: 'validator'}).byKey('simple-validator'), 'simple-validator found in <iron-meta>');
+      });
+
+      test('registered in <iron-meta> as specific validation', function() {
+        fixture('target-specified');
+        assert.ok(new Polymer.IronMeta({
+          type: 'validator'
+        }).byKey('simple-validator--validatableTarget'), 'simple-validator found in <iron-meta>');
       });
 
     });

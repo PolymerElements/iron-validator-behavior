@@ -49,12 +49,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             message: {
                 type: String,
                 value: ''
+            },
+
+            /**
+             * Used to connect the custom validator instance to the desired validatable via the property `validatableId`.
+             */
+            'for': {
+                type: String,
+                value: ''
             }
 
         },
 
         ready: function () {
-            new Polymer.IronMeta({type: this.validatorType, key: this.validatorName, value: this});
+            var suffix = this.for ? ('--' + this.for) : '';
+            new Polymer.IronMeta({type: this.validatorType, key: this.validatorName + suffix, value: this});
         },
 
         /**
