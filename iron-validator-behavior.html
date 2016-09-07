@@ -69,9 +69,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         /**
          * Implement custom validation logic in this function.
          * @param {Object} values The value to validate. May be any type depending on the validation logic.
+         * @param {HTMLElement} The element validation is being applied to. When a native validation API is present
+         * (like for instance on the HTMLinputElement), native validation can be used inside the validate function of the validator.
          * @return {Boolean} true if `values` is valid.
          */
-        validate: function (values) {
+        validate: function (values, input) {
         }
     };
 
