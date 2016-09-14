@@ -18,13 +18,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <title>iron-validator-behavior demo</title>
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
   <link rel="import" href="../../iron-meta/iron-meta.html">
-  <link rel="import" href="../../paper-styles/demo-pages.html">
+  <link rel="import" href="../../paper-styles/color.html">
   <link rel="import" href="cats-only.html">
 
-  <style is="custom-style">
-
+  <custom-style><style is="custom-style">
     h1 {
       margin-left: 30px;
     }
@@ -59,14 +57,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       margin: 5px;
     }
 
-  </style>
+  </style><custom-style>
 
 </head>
 <body unresolved>
 
   <div class="vertical-section vertical-section-container centered">
     <h1>&lt;iron-validator-behavior&gt;</h1>
-    <template is="dom-bind">
+    <dom-bind>
+      <template is="dom-bind">
 
       <cats-only></cats-only>
 
@@ -114,16 +113,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </section>
 
     </template>
+  </dom-bind>
 
   </div>
 
   <script>
-
-    document.addEventListener('WebComponentsReady', function() {
-
+    HTMLImports.whenReady(function() {
       var validator = new Polymer.IronMeta({type: 'validator'}).byKey('cats-only');
 
-      var scope = document.querySelector('template[is=dom-bind]');
+      var scope = document.querySelector('dom-bind');
       scope.valid = scope.validMulti = scope.validForm = true;
 
       scope._onInput = function(event) {
