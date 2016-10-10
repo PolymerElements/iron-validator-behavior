@@ -38,16 +38,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <h3>The <code>cats-only</code> validator only accepts the string "cats"</h3>
     <demo-snippet class="centered-demo">
       <template>
-        <style>
-          #simpleInput[invalid] {
-            color: var(--google-red-500);
-            border: 2px solid var(--google-red-500);
-          }
-          #simpleInput:not([invalid]) {
-            color: var(--google-green-500);
-            border: 2px solid var(--google-green-500);
-          }
-        </style>
+        <custom-style>
+          <style is="custom-style">
+            #simpleInput[invalid] {
+              color: var(--google-red-500);
+              border: 2px solid var(--google-red-500);
+            }
+            #simpleInput:not([invalid]) {
+              color: var(--google-green-500);
+              border: 2px solid var(--google-green-500);
+            }
+          </style>
+        </custom-style>
         <cats-only id="simpleCats"></cats-only>
         <input id="simpleInput">
 
@@ -67,16 +69,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <h3>Validators can be used with multiple elements</h3>
     <demo-snippet class="centered-demo">
       <template>
-        <style>
-          #multiInput[invalid] input {
-            color: var(--google-red-500);
-            border: 2px solid var(--google-red-500);
-          }
-          #multiInput:not([invalid]) input {
-            color: var(--google-green-500);
-            border: 2px solid var(--google-green-500);
-          }
-        </style>
+        <custom-style>
+          <style is="custom-style">
+            #multiInput[invalid] input {
+              color: var(--google-red-500);
+              border: 2px solid var(--google-red-500);
+            }
+            #multiInput:not([invalid]) input {
+              color: var(--google-green-500);
+              border: 2px solid var(--google-green-500);
+            }
+          </style>
+        </custom-style>
 
         <p>Type "cats" in both inputs to make everything valid</p>
         <cats-only id="multiCats"></cats-only>
@@ -107,14 +111,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <h3>Validators can be used with forms</h3>
     <demo-snippet class="centered-demo">
       <template>
-        <style>
-          #form[invalid] {
-            border: 2px solid var(--google-red-500);
-          }
-          #form:not([invalid]) {
-            border: 2px solid var(--google-green-500);
-          }
-        </style>
+        <custom-style>
+          <style is="custom-style">
+            #form[invalid] {
+              border: 2px solid var(--google-red-500);
+            }
+            #form:not([invalid]) {
+              border: 2px solid var(--google-green-500);
+            }
+          </style>
+        </custom-style>
 
         <p>The form is validated when the button is pressed. Type "cats" in the
           input and select "cats" from the dropdown to make everything valid.</p>
