@@ -1,0 +1,112 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="iron-validator-behavior.html">
+
+<!--
+`<iron-native-validator>` is a an instantiation of a validator implementing the native
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState">ValidityState API</a>.
+
+It maps native validators 'required', 'max', 'min', 'step', 'maxlength', 'minlength', 'pattern',
+'emailtype'(type=email) and 'urltype' (type=url) to the validity state
+
+    <iron-native-validator validator-name="required" message="Please fill in a value" id="instance"></iron-native-validator>
+    <iron-native-validator validator-name="emailtype" message="Please enter a valid e-mail address"></iron-native-validator>
+
+These native validators need to be instantiated once, so they are ready for use on a global level.
+The configured messages will be exposed by the validatable element, and will by default be shown via the paper-input.
+
+# Shimming
+When the native ValidityState API doesn't work (yet) in a certain browser, it is possible to provide your own validity
+method.
+
+@group Iron Elements
+@element iron-native-validator
+@hero hero.svg
+@demo demo/index.html
+-->
+
+<dom-module id="iron-native-validator">
+
+    <script>
+
+        (function () {
+
+            var validityFns = {};
+
+            Polymer({
+
+                is: 'iron-native-validator',
+
+                behaviors: [
+                    Polymer.IronValidatorBehavior
+                ],
+
+                properties: {
+                    /**
+                     * Namespace for this validator, override of default 'validator'
+                     */
+                    validatorType: {
+                        type: String,
+                        value: 'native-validator'
+                    },
+
+                    /**
+                     * Maps native validity API to native validator names
+                     */
+                    validityApiMapping: {
+                        type: Object,
+                        readOnly: true,
+                        value: function () {
+                            return {
+                                required: 'valueMissing',
+                                pattern: 'patternMismatch',
+                                max: 'rangeOverflow',
+                                min: 'rangeUnderflow',
+                                step: 'stepMismatch',
+                                maxlength: 'tooLong',
+                                minlength: 'tooShort',
+                                emailtype: 'typeMismatch',
+                                urltype: 'typeMismatch'
+                            };
+                        }
+                    }
+
+                },
+
+                ready: function () {
+                    // Use native validity API for every validator
+                    var mapping = this.validityApiMapping;
+                    Object.keys(mapping).forEach(function (validator) {
+                        validityFns[validator] = function (value, input) {
+                            return !input.validity[mapping[validator]];
+                        };
+                    }, this);
+                },
+
+                validate: function (value, input) {
+                    return validityFns[this.validatorName](value, input);
+                },
+
+                /* For (globally) overriding the validation method of a native validator.
+                 Should only be used when native validity API doesn't work (yet) in a certain browser
+                 */
+                overrideValidationMethod: function (validator, fn) {
+                    validityFns[validator] = fn.bind(this);
+                }
+
+            });
+
+        }());
+
+    </script>
+
+</dom-module>
