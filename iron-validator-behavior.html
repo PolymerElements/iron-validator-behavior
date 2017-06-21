@@ -22,8 +22,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
    * @polymerBehavior
    */
   Polymer.IronValidatorBehavior = {
+
+    properties: {
+      /**
+       * Name for this validator, used by `Polymer.IronValidatableBehavior` to lookup this element.
+       */
+      validatorName: {
+        type: String,
+        value: function() {
+          return this.is;
+        }
+      }
+    },
+
     ready: function() {
-      new Polymer.IronMeta({type: 'validator', key: this.is, value: this});
+      new Polymer.IronMeta({type: 'validator', key: this.validatorName, value: this});
     },
 
     /**
