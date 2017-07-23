@@ -23,7 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
    */
   Polymer.IronValidatorBehavior = {
     ready: function() {
-      new Polymer.IronMeta({type: 'validator', key: this.is, value: this});
+      new Polymer.IronMeta({type: 'validator', key: this.constructor.is, value: this});
     },
 
     /**
