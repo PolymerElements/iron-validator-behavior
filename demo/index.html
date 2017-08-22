@@ -18,12 +18,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <title>iron-validator-behavior demo</title>
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-  <link rel="import" href="../../paper-styles/color.html">
-  <link rel="import" href="cats-only.html">
+  <script type="module" src="../../iron-demo-helpers/demo-snippet.js"></script>
+  <script type="module" src="../../iron-demo-helpers/demo-pages-shared-styles.js"></script>
+  <script type="module" src="../../paper-styles/color.js"></script>
+  <script type="module" src="./cats-only.js"></script>
 
-  <custom-style>
+  <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<custom-style>
     <style is="custom-style" include="demo-pages-shared-styles">
       input, select {
         padding: 0.4em;
@@ -31,10 +42,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 5px;
       }
     </style>
-  </custom-style>
+  </custom-style>`;
+
+document.body.appendChild($_documentContainer);
+</script>
 </head>
 <body unresolved>
-  <div class="vertical-section-container centered">
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
     <h3>The <code>cats-only</code> validator only accepts the string "cats" and
     its suffixes ("c", "ca", "cat").</h3>
     <demo-snippet class="centered-demo">
@@ -63,7 +80,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             else
               this.setAttribute('invalid', true);
           };
-        </script>
+        &lt;/script>
       </template>
     </demo-snippet>
 
@@ -105,7 +122,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             else
               this.setAttribute('invalid', true);
           };
-        </script>
+        &lt;/script>
       </template>
     </demo-snippet>
 
@@ -161,7 +178,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             else
               this.setAttribute('invalid', true);
           };
-        </script>
+        &lt;/script>
+      </template>
+    </demo-snippet>
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>    data[el.name] = el.value;
+    }
+  }
+
+  var valid = formCats.validate(data);
+  if (valid)
+    this.removeAttribute('invalid');
+  else
+    this.setAttribute('invalid', true);
+}
+</script>
       </template>
     </demo-snippet>
   </div>
