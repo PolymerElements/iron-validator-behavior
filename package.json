@@ -1,0 +1,10 @@
+{
+  "name": "@polymer/iron-validator-behavior",
+  "private": true,
+  "description": "Implements a input validator",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/iron-validator-behavior.git"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt"
+}
