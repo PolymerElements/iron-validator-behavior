@@ -27,7 +27,7 @@ declare namespace Polymer {
      * @param values The value to validate. May be any type depending on the validation logic.
      * @returns true if `values` is valid.
      */
-    validate(values: object|null): Boolean|null;
+    validate(values: object|null): boolean;
   }
 
   const IronValidatorBehavior: object;
