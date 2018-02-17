@@ -19,7 +19,7 @@ declare namespace Polymer {
    * `Polymer.IronValidatableBehavior`.
    */
   interface IronValidatorBehavior {
-    ready(): any;
+    ready(): void;
 
     /**
      * Implement custom validation logic in this function.
