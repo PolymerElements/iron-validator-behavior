@@ -12,18 +12,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-meta/iron-meta.html">
 
 <script>
-
   /**
-   * Use `Polymer.IronValidatorBehavior` to implement a custom input/form validator. Element
-   * instances implementing this behavior will be registered for use in elements that implement
-   * `Polymer.IronValidatableBehavior`.
+   * Use `Polymer.IronValidatorBehavior` to implement a custom input/form
+   * validator. Element instances implementing this behavior will be registered
+   * for use in elements that implement `Polymer.IronValidatableBehavior`.
    *
    * @demo demo/index.html
    * @polymerBehavior
    */
   Polymer.IronValidatorBehavior = {
     ready: function() {
-      new Polymer.IronMeta({type: 'validator', key: this.is || this.constructor.is, value: this});
+      new Polymer.IronMeta(
+          {type: 'validator', key: this.is || this.constructor.is, value: this});
     },
 
     /**
@@ -31,8 +31,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      * @param {Object} values The value to validate. May be any type depending on the validation logic.
      * @return {boolean} true if `values` is valid.
      */
-    validate: function(values) {
-    }
+    validate: function(values) {}
   };
-
 </script>
