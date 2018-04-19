@@ -12,14 +12,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-validator-behavior.html">
 
 <script>
-
   Polymer({
 
     is: 'cats-only',
 
-    behaviors: [
-      Polymer.IronValidatorBehavior
-    ],
+    behaviors: [Polymer.IronValidatorBehavior],
 
     validateObject: function(obj) {
       var valid = true;
@@ -42,5 +39,4 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
   });
-
 </script>

@@ -32,16 +32,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </test-fixture>
 
   <script>
-
     suite('basic', function() {
-
       test('registered in <iron-meta>', function() {
         fixture('basic');
-        assert.ok(new Polymer.IronMeta({type: 'validator'}).byKey('simple-validator'), 'simple-validator found in <iron-meta>');
+        assert.ok(
+            new Polymer.IronMeta({type: 'validator'}).byKey('simple-validator'),
+            'simple-validator found in <iron-meta>');
       });
-
     });
-
   </script>
 
 </body>
