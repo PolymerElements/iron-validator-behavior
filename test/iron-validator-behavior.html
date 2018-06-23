@@ -14,13 +14,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <title>iron-validator-behavior basic tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+  <script src="../../../wct-browser-legacy/browser.js"></script>
   <script src="../../test-fixture/test-fixture-mocha.js"></script>
 
-  <link href="../../test-fixture/test-fixture.html" rel="import">
-  <link href="../../iron-meta/iron-meta.html" rel="import">
-  <link href="simple-validator.html" rel="import">
+  <script type="module" src="../../test-fixture/test-fixture.js"></script>
+  <script type="module" src="../../iron-meta/iron-meta.js"></script>
+  <script type="module" src="./simple-validator.js"></script>
 
 </head>
 <body>
@@ -31,16 +31,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </template>
   </test-fixture>
 
-  <script>
-    suite('basic', function() {
-      test('registered in <iron-meta>', function() {
-        fixture('basic');
-        assert.ok(
-            new Polymer.IronMeta({type: 'validator'}).byKey('simple-validator'),
-            'simple-validator found in <iron-meta>');
-      });
-    });
-  </script>
+  <script type="module">
+import '@polymer/test-fixture/test-fixture.js';
+import { IronMeta } from '@polymer/iron-meta/iron-meta.js';
+import './simple-validator.js';
+suite('basic', function() {
+  test('registered in <iron-meta>', function() {
+    fixture('basic');
+    assert.ok(
+        new IronMeta({type: 'validator'}).byKey('simple-validator'),
+        'simple-validator found in <iron-meta>');
+  });
+});
+</script>
 
 </body>
 </html>

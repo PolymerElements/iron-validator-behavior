@@ -1,0 +1,34 @@
+{
+  "files": {
+    "iron-validator-behavior.html": {
+      "convertedUrl": "iron-validator-behavior.js",
+      "exports": {
+        "Polymer.IronValidatorBehavior": "IronValidatorBehavior"
+      }
+    },
+    "index.html": {
+      "convertedUrl": "index.html",
+      "exports": {}
+    },
+    "demo/index.html": {
+      "convertedUrl": "demo/index.html",
+      "exports": {}
+    },
+    "demo/cats-only.html": {
+      "convertedUrl": "demo/cats-only.js",
+      "exports": {}
+    },
+    "test/index.html": {
+      "convertedUrl": "test/index.html",
+      "exports": {}
+    },
+    "test/iron-validator-behavior.html": {
+      "convertedUrl": "test/iron-validator-behavior.html",
+      "exports": {}
+    },
+    "test/simple-validator.html": {
+      "convertedUrl": "test/simple-validator.js",
+      "exports": {}
+    }
+  }
+}
