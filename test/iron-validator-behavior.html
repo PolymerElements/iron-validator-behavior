@@ -27,8 +27,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script type="module">
     import '@polymer/test-fixture/test-fixture.js';
-    import { IronMeta } from '@polymer/iron-meta/iron-meta.js';
     import './simple-validator.js';
+
+    import {IronMeta} from '@polymer/iron-meta/iron-meta.js';
+
     suite('basic', function() {
       test('registered in <iron-meta>', function() {
         fixture('basic');
@@ -37,7 +39,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             'simple-validator found in <iron-meta>');
       });
     });
-</script>
+  </script>
 
 </body>
 </html>
