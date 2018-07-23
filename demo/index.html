@@ -22,36 +22,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script type="module" src="../../iron-demo-helpers/demo-pages-shared-styles.js"></script>
   <script type="module" src="../../paper-styles/color.js"></script>
   <script type="module" src="./cats-only.js"></script>
-
-  <!-- FIXME(polymer-modulizer):
-        These imperative modules that innerHTML your HTML are
-        a hacky way to be sure that any mixins in included style
-        modules are ready before any elements that reference them are
-        instantiated, otherwise the CSS @apply mixin polyfill won't be
-        able to expand the underlying CSS custom properties.
-        See: https://github.com/Polymer/polymer-modulizer/issues/154
-        -->
-    <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<custom-style>
-    <style is="custom-style" include="demo-pages-shared-styles">
-      input, select {
-        padding: 0.4em;
-        font-size: 16px;
-        margin: 5px;
-      }
-    </style>
-  </custom-style>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
+  <script type="module">
+    import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+    const template = html
+    `<custom-style>
+        <style is="custom-style" include="demo-pages-shared-styles">
+          input, select {
+            padding: 0.4em;
+            font-size: 16px;
+            margin: 5px;
+          }
+        </style>
+      </custom-style>`;
+    document.body.appendChild(template.content);
+  </script>
 </head>
 <body unresolved>
-  <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+  <div class="vertical-section-container centered">
     <h3>The <code>cats-only</code> validator only accepts the string "cats" and
     its suffixes ("c", "ca", "cat").</h3>
     <demo-snippet class="centered-demo">
@@ -80,7 +67,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
             else
               this.setAttribute('invalid', true);
           };
-        &lt;/script>
+        </script>
       </template>
     </demo-snippet>
 
@@ -122,7 +109,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
             else
               this.setAttribute('invalid', true);
           };
-        &lt;/script>
+        </script>
       </template>
     </demo-snippet>
 
@@ -178,25 +165,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
             else
               this.setAttribute('invalid', true);
           };
-        &lt;/script>
-      </template>
-    </demo-snippet>
-  </div>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>; i++) {
-    if (el.name) {
-      data[el.name] = el.value;
-    }
-  }
-
-  var valid = formCats.validate(data);
-  if (valid)
-    this.removeAttribute('invalid');
-  else
-    this.setAttribute('invalid', true);
-}
-</script>
+        </script>
       </template>
     </demo-snippet>
   </div>
