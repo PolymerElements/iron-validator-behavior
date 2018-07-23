@@ -19,7 +19,7 @@ Polymer({
 
   validateObject: function(obj) {
     var valid = true;
-    for (key in obj) {
+    for (let key in obj) {
       if (obj[key] !== 'cats') {
         valid = false;
         break;
