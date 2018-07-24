@@ -13,9 +13,9 @@ import '@polymer/polymer/polymer-legacy.js';
 import {IronMeta} from '@polymer/iron-meta/iron-meta.js';
 
 /**
- * Use `Polymer.IronValidatorBehavior` to implement a custom input/form
+ * Use `IronValidatorBehavior` to implement a custom input/form
  * validator. Element instances implementing this behavior will be registered
- * for use in elements that implement `Polymer.IronValidatableBehavior`.
+ * for use in elements that implement `IronValidatableBehavior`.
  *
  * @demo demo/index.html
  * @polymerBehavior

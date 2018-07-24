@@ -2,7 +2,7 @@
 [![Build status](https://travis-ci.org/PolymerElements/iron-validator-behavior.svg?branch=master)](https://travis-ci.org/PolymerElements/iron-validator-behavior)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://webcomponents.org/element/@polymer/iron-validator-behavior)
 
-## &lt;iron-validator-behavior&gt;
+## IronValidatorBehavior
 Use `IronValidatorBehavior` to implement a custom input/form validator. Element
 instances implementing this behavior will be registered for use in elements that implement
 `IronValidatableBehavior`.
@@ -23,10 +23,7 @@ import {PolymerElement, html} from '@polymer/polymer';
 import {mixinBehaviors} from '@polymer/polymer/lib/legacy/class.js';
 import {IronValidatorBehavior} from '@polymer/iron-validator-behavior/iron-validator-behavior.js';
 
-class SampleValidator mixinBehaviors([IronValidatorBehavior], PolymerElement){
-  static get template() {
-    return html``;
-  }
+class SampleValidator extends mixinBehaviors([IronValidatorBehavior], PolymerElement){
   // This validator only validates strings, and is only valid if
   // the value is "cat".
   function validate(value) {
@@ -49,7 +46,7 @@ customElements.define('sample-validator', SampleValidator);
     <input id="input">
     <script>
       input.addEventListener('input', function(event) {
-        var valid = simpleCats.validate(input.value);
+        var valid = aValidator.validate(input.value);
         if (valid)
           input.removeAttribute('invalid');
         else
